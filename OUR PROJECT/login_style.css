@@ -1,0 +1,111 @@
+/* General Body and Centering for Login/Register Pages */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Full viewport height */
+    margin: 0;
+}
+
+/* Login/Register Box Styling */
+.wrapper {
+    width: 360px;
+    padding: 30px 40px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 25px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Form Group and Inputs */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box; /* Include padding in the element's total width/height */
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+    border-color: #007bff; /* Highlight on focus */
+    outline: none;
+}
+
+/* Error/Alert Styling */
+.alert {
+    color: white;
+    background-color: #dc3545;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 0.95em;
+}
+
+/* Submit Button */
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.input-error {
+    border-color: #dc3545;
+}
+
+.error-text {
+    color: #dc3545;
+    font-size: 0.9em;
+    margin-top: 6px;
+}
+
+/* Register Link */
+p {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+p a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
