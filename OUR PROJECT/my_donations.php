@@ -2,6 +2,7 @@
 session_start();
 require_once "config.php";
 
+// Check if user is logged in and is a volunteer
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION["role"] !== "volunteer"){
     header("location: login.php");
     exit;
@@ -11,6 +12,7 @@ $user_id = $_SESSION["id"];
 $donations = [];
 $error_message = "";
 
+// Fetch donation history for this user
 $sql = "SELECT d.Amount, d.DonationDate, c.Name AS CharityName, c.Description AS CharityDescription
         FROM donations d
         JOIN charities c ON d.CharityId = c.CharityId
@@ -63,7 +65,7 @@ mysqli_close($link);
             <thead>
                 <tr>
                     <th>Charity</th>
-                    <th>Amount</th>
+                    <th>Amount (NPR)</th>
                     <th>Date</th>
                     <th>Details</th>
                 </tr>
@@ -72,7 +74,7 @@ mysqli_close($link);
                 <?php foreach ($donations as $donation): ?>
                     <tr>
                         <td><strong><?php echo htmlspecialchars($donation['CharityName']); ?></strong></td>
-                        <td>$<?php echo number_format($donation['Amount'], 2); ?></td>
+                        <td><?php echo number_format($donation['Amount'], 2) . " NPR"; ?></td>
                         <td><?php echo date("F j, Y", strtotime($donation['DonationDate'])); ?></td>
                         <td><?php echo htmlspecialchars($donation['CharityDescription']); ?></td>
                     </tr>

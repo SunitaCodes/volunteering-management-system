@@ -62,17 +62,7 @@ CREATE TABLE charities (
 );
 
 -- Table: donations
-CREATE TABLE donations (
-    DonationId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    UserId INT NOT NULL,
-    CharityId INT NOT NULL,  -- Link donation to a specific charity
-    Amount DECIMAL(10, 2) NOT NULL,
-    DonationDate DATE NOT NULL,
-    CreatedDate DATETIME DEFAULT CURRENT_TIMESTAMP,
-    
-    -- Foreign key constraints
-    FOREIGN KEY (UserId) REFERENCES users(UserId) ON DELETE CASCADE,
-    FOREIGN KEY (CharityId) REFERENCES charities(CharityId) ON DELETE RESTRICT
+
 );
 
 -- OPTIONAL: Insert a few sample charities for testing

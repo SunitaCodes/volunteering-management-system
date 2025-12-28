@@ -1,14 +1,13 @@
 <?php
-/* Database credentials */
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', ''); 
-// !! UPDATE DATABASE NAME !!
-define('DB_NAME', 'VolunteerManagementSystemDb'); 
+// EXACT name from your screenshot:
+define('DB_NAME', 'volunteermanagementsystemdb'); 
 
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
 if($link === false){
-    die("ERROR: Could not connect to the database. " . mysqli_connect_error());
+    die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 ?>
