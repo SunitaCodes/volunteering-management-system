@@ -13,11 +13,11 @@ $donations = [];
 $error_message = "";
 
 // Fetch donation history for this user
-$sql = "SELECT d.Amount, d.DonationDate, c.Name AS CharityName, c.Description AS CharityDescription
+$sql = "SELECT d.Amount, d.createdDate as DonationDate, c.Name AS CharityName, c.Description AS CharityDescription
         FROM donations d
         JOIN charities c ON d.CharityId = c.CharityId
         WHERE d.UserId = ?
-        ORDER BY d.DonationDate DESC";
+        ORDER BY d.createdDate DESC";
 
 if ($stmt = mysqli_prepare($link, $sql)) {
     mysqli_stmt_bind_param($stmt, "i", $user_id);

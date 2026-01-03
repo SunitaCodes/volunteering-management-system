@@ -60,12 +60,12 @@ if($stmt = mysqli_prepare($link, $sql)){
     mysqli_stmt_bind_param($stmt, "ii", $user_id, $event_id);
     
     if(mysqli_stmt_execute($stmt)){
+        $signup_id = mysqli_stmt_insert_id($stmt);
         mysqli_stmt_close($stmt);
-        mysqli_close($link);
-        
-        // SUCCESS: Redirect to the preparation page to suggest a T-shirt
-        // This is the "Applicable" step your teacher is looking for.
-        header("location: success_preparation.php?event_id=" . $event_id);
+        mysqli_close($link);        
+    
+        // SUCCESS: Redirect to the preparation page to suggest a T-shirt      
+        header("location: success_preparation.php?event_id={$event_id}&signup_id={$signup_id}");
         exit;
     } else {
         $err = mysqli_error($link);

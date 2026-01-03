@@ -47,7 +47,7 @@ $selected_charity_id = isset($_GET['charity_id']) ? (int)$_GET['charity_id'] : "
             <hr>
 
             <form action="payment_process.php" method="post">
-                
+                <input type="hidden" name="payment_type" value="donation">
                 <div class="form-group">
                     <label for="charity_id">Select Charity</label>
                     <select id="charity_id" name="charity_id" class="form-control" required>

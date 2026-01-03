@@ -62,7 +62,44 @@ CREATE TABLE charities (
 );
 
 -- Table: donations
+CREATE TABLE donations (
+    DonationId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    CharityId INT NOT NULL,
+    TransactionUniqueId VARCHAR(100) NOT NULL UNIQUE,
+    TransactionCode VARCHAR(100) NULL,
+    Amount DECIMAL(10,2) NOT NULL,
+    Status ENUM('PENDING', 'COMPLETE', 'CANCELED','NOT_FOUND','AMBIGUOUS') NOT NULL DEFAULT 'PENDING',
+    UserId INT NULL,
+    UpdatedBy INT NULL,
+    CreatedDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UpdatedDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (CharityId) REFERENCES charities(CharityId) ON DELETE RESTRICT,
+    FOREIGN KEY (UserId) REFERENCES users(UserId) ON DELETE SET NULL,
+    FOREIGN KEY (UpdatedBy) REFERENCES users(UserId) ON DELETE SET NULL,
+    INDEX idx_donations_charity (CharityId),
+    INDEX idx_donations_user (UserId)
+);
 
+-- Table : Orders
+
+
+CREATE TABLE orders (
+    OrderId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    EventId INT NOT NULL,
+    SignupId INT NOT NULL,
+    TransactionUniqueId VARCHAR(100) NOT NULL UNIQUE,
+    TransactionCode VARCHAR(100) NULL,
+    Amount DECIMAL(10,2) NOT NULL,
+    Status ENUM('PENDING', 'COMPLETE', 'CANCELED','NOT_FOUND','AMBIGUOUS') NOT NULL DEFAULT 'PENDING',
+    UserId INT NULL,
+    UpdatedBy INT NULL,
+    CreatedDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UpdatedDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (EventId) REFERENCES events(EventId) ON DELETE CASCADE,
+    FOREIGN KEY (UserId) REFERENCES users(UserId) ON DELETE SET NULL,
+    FOREIGN KEY (UpdatedBy) REFERENCES users(UserId) ON DELETE SET NULL,
+    INDEX idx_orders_event (EventId),
+    INDEX idx_orders_user (UserId)
 );
 
 -- OPTIONAL: Insert a few sample charities for testing
