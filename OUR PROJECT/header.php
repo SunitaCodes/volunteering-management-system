@@ -88,6 +88,7 @@ $current_page = basename($_SERVER["PHP_SELF"]);
                     <a href="manage_events.php" class="<?php echo $current_page === 'manage_events.php' ? 'active' : ''; ?>">Manage Events</a>
                     <a href="manage_charities.php" class="<?php echo $current_page === 'manage_charities.php' ? 'active' : ''; ?>">Manage Charities</a>
                     <a href="manage_volunteers.php" class="<?php echo $current_page === 'manage_volunteers.php' ? 'active' : ''; ?>">Manage Users</a>
+                    <a href="manage_payments.php" class="<?php echo $current_page === 'manage_payments.php' ? 'active' : ''; ?>">Manage Payments</a>
                     <span style="color: #ffc107; margin: 0 10px;">|</span>
                 <?php endif; ?>
 
